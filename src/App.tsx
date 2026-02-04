@@ -11,6 +11,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
+import About from "./pages/About";
+import Movements from "./pages/Movements";
 
 const queryClient = new QueryClient();
 
@@ -34,8 +36,22 @@ const indexRoute = createTanStackRoute({
   component: Index,
 })
 
+// Create about route
+const aboutRoute = createTanStackRoute({
+  getParentRoute: () => rootRoute,
+  path: '/about',
+  component: About,
+})
+
+// Create movements route
+const movementsRoute = createTanStackRoute({
+  getParentRoute: () => rootRoute,
+  path: '/movements',
+  component: Movements,
+})
+
 // Create route tree
-const routeTree = rootRoute.addChildren([indexRoute])
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute, movementsRoute])
 
 // Create router with proper TypeScript configuration
 const router = createRouter({ 
@@ -54,4 +70,3 @@ declare module '@tanstack/react-router' {
 const App = () => <RouterProvider router={router} />
 
 export default App;
-
