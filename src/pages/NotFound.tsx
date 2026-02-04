@@ -1,8 +1,8 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { useRouterState, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 
 const NotFound = () => {
-  const location = useLocation();
+  const { location } = useRouterState();
 
   useEffect(() => {
     console.error(
