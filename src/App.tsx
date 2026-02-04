@@ -12,7 +12,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Movements from "./pages/Movements";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +27,7 @@ const rootRoute = createRootRoute({
       </TooltipProvider>
     </QueryClientProvider>
   ),
+  notFoundComponent: NotFound,
 })
 
 // Create index route
@@ -43,21 +44,13 @@ const aboutRoute = createTanStackRoute({
   component: About,
 })
 
-// Create movements route
-const movementsRoute = createTanStackRoute({
-  getParentRoute: () => rootRoute,
-  path: '/movements',
-  component: Movements,
-})
-
 // Create route tree
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute, movementsRoute])
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
-// Create router with proper TypeScript configuration
+// Create router
 const router = createRouter({ 
   routeTree,
-  defaultPreload: 'intent' as const,
-  defaultPreloadStaleTime: 0,
+  defaultPreload: 'intent',
 })
 
 // Register router for type safety

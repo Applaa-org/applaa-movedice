@@ -1,36 +1,42 @@
-import { Link } from '@tanstack/react-router';
-import { Dumbbell, Dice5 } from 'lucide-react';
+import { Link } from "@tanstack/react-router";
+import { Activity, Menu, User, Settings, Bell } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/80 backdrop-blur-xl shadow-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <Dice5 className="text-white w-6 h-6" />
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+            <Activity className="text-white w-6 h-6" />
           </div>
-          <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-            MoveDice
+          <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
+            FlexFlow
           </span>
         </Link>
-        
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">
-            Home
-          </Link>
-          <Link to="/about" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">
-            About
-          </Link>
-          <Link to="/movements" className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">
-            Movements
-          </Link>
+
+        <nav className="hidden md:flex items-center gap-8">
+          <Link to="/" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Dashboard</Link>
+          <Link to="/about" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">About</Link>
+          <Link to="/" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Workouts</Link>
+          <Link to="/" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Community</Link>
         </nav>
 
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1 px-3 py-1.5 bg-indigo-50 rounded-full border border-indigo-100">
-            <Dumbbell className="w-4 h-4 text-indigo-600" />
-            <span className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">Fitness Play</span>
-          </div>
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="text-slate-500">
+            <Bell className="w-5 h-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="text-slate-500">
+            <Settings className="w-5 h-5" />
+          </Button>
+          <div className="h-8 w-[1px] bg-slate-200 mx-1" />
+          <Button variant="ghost" size="icon" className="rounded-full bg-slate-100">
+            <User className="w-5 h-5 text-slate-600" />
+          </Button>
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="w-6 h-6" />
+          </Button>
         </div>
       </div>
     </header>

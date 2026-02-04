@@ -1,47 +1,44 @@
-import Header from '@/components/Header';
-import { MadeWithApplaa } from '@/components/made-with-applaa';
-import { Info, ShieldCheck, Sparkles } from 'lucide-react';
+import Header from "@/components/Header";
+import { MadeWithApplaa } from "@/components/made-with-applaa";
+import { Info, Shield, Zap, Users } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-violet-50">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       <Header />
-      <main className="container mx-auto px-4 py-16 max-w-3xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">About MoveDice</h1>
-          <p className="text-lg text-gray-600">Making fitness fun through the power of randomness.</p>
-        </div>
-
-        <div className="space-y-8">
-          <section className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-            <div className="flex items-center space-x-3 mb-4">
-              <Sparkles className="text-indigo-600 w-6 h-6" />
-              <h2 className="text-2xl font-bold text-gray-800">Our Mission</h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              MoveDice was created to break the monotony of traditional workouts. By introducing an element of chance, we turn exercise into a playful game that keeps you engaged and moving.
+      <main className="flex-grow container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+              Empowering Your Fitness Journey
+            </h1>
+            <p className="text-xl text-slate-600 leading-relaxed">
+              FlexFlow is designed to help you track, analyze, and improve your physical performance with cutting-edge technology and intuitive design.
             </p>
-          </section>
+          </div>
 
-          <section className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-            <div className="flex items-center space-x-3 mb-4">
-              <ShieldCheck className="text-indigo-600 w-6 h-6" />
-              <h2 className="text-2xl font-bold text-gray-800">Privacy First</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+              <Zap className="w-10 h-10 text-blue-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Real-time Tracking</h3>
+              <p className="text-slate-600">Monitor your movements and vitals with millisecond precision using our advanced sensor integration.</p>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              We believe your fitness journey is yours alone. MoveDice does not track your movements, store your data, or require any registration. It's just you, the dice, and the movement.
-            </p>
-          </section>
-
-          <section className="bg-indigo-900 p-8 rounded-3xl shadow-xl text-white">
-            <div className="flex items-center space-x-3 mb-4">
-              <Info className="text-indigo-300 w-6 h-6" />
-              <h2 className="text-2xl font-bold">Disclaimer</h2>
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+              <Shield className="w-10 h-10 text-emerald-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Privacy First</h3>
+              <p className="text-slate-600">Your data is yours. We use end-to-end encryption to ensure your personal health information stays private.</p>
             </div>
-            <p className="text-indigo-100 leading-relaxed opacity-90">
-              MoveDice is for educational and entertainment purposes only. Please consult with a healthcare professional before starting any new exercise program. Listen to your body and stop if you feel pain.
-            </p>
-          </section>
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+              <Users className="w-10 h-10 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Community Driven</h3>
+              <p className="text-slate-600">Join thousands of athletes sharing tips, routines, and motivation to reach their peak performance.</p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+              <Info className="w-10 h-10 text-orange-600 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Expert Insights</h3>
+              <p className="text-slate-600">Get personalized recommendations based on your unique movement patterns and fitness goals.</p>
+            </div>
+          </div>
         </div>
       </main>
       <MadeWithApplaa />

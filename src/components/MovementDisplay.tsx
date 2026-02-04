@@ -1,57 +1,54 @@
-import { Movement } from '@/data/movements';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Timer, Repeat } from 'lucide-react';
+import { TrendingUp, Clock, Flame, Target } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface MovementDisplayProps {
-  movement: Movement | null;
-  diceValue: number;
-  isVisible: boolean;
+interface StatProps {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  color: string;
 }
 
-export default function MovementDisplay({ movement, diceValue, isVisible }: MovementDisplayProps) {
-  if (!movement) return null;
+const Stat = ({ label, value, icon, color }: StatProps) => (
+  <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+    <div className={cn("p-3 rounded-xl text-white shadow-md", color)}>
+      {icon}
+    </div>
+    <div>
+      <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">{label}</p>
+      <p className="text-xl font-bold text-slate-900">{value}</p>
+    </div>
+  </div>
+);
 
-  const reps = diceValue * 5;
-  const seconds = diceValue * 10;
+import { cn } from "@/lib/utils";
 
+export default function MovementDisplay() {
   return (
-    <div className={cn(
-      "w-full max-w-md transition-all duration-500 transform",
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
-    )}>
-      <Card className="overflow-hidden border-none shadow-2xl bg-white/90 backdrop-blur-md">
-        <div className={cn("h-3", movement.color)} />
-        <CardContent className="p-8 text-center">
-          <div className="text-6xl mb-6 animate-pulse">{movement.icon}</div>
-          <Badge variant="secondary" className="mb-4 uppercase tracking-widest text-[10px] font-bold">
-            {movement.category}
-          </Badge>
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">{movement.name}</h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
-            {movement.description}
-          </p>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
-              <div className="flex items-center justify-center space-x-2 text-indigo-600 mb-1">
-                <Repeat className="w-4 h-4" />
-                <span className="text-xs font-bold uppercase">Reps</span>
-              </div>
-              <div className="text-2xl font-black text-indigo-900">{reps}</div>
-            </div>
-            <div className="bg-violet-50 p-4 rounded-2xl border border-violet-100">
-              <div className="flex items-center justify-center space-x-2 text-violet-600 mb-1">
-                <Timer className="w-4 h-4" />
-                <span className="text-xs font-bold uppercase">Seconds</span>
-              </div>
-              <div className="text-2xl font-black text-violet-900">{seconds}s</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+      <Stat 
+        label="Daily Steps" 
+        value="8,432" 
+        icon={<TrendingUp className="w-5 h-5" />} 
+        color="bg-blue-500"
+      />
+      <Stat 
+        label="Active Time" 
+        value="45m" 
+        icon={<Clock className="w-5 h-5" />} 
+        color="bg-emerald-500"
+      />
+      <Stat 
+        label="Calories" 
+        value="320 kcal" 
+        icon={<Flame className="w-5 h-5" />} 
+        color="bg-orange-500"
+      />
+      <Stat 
+        label="Goal Progress" 
+        value="84%" 
+        icon={<Target className="w-5 h-5" />} 
+        color="bg-purple-500"
+      />
     </div>
   );
 }
-
-import { cn } from '@/lib/utils';
